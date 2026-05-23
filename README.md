@@ -1,98 +1,100 @@
 # AutomationExercise Test Automation
 
-Este repositório contém um conjunto de testes automatizados para os cenários descritos em `https://automationexercise.com/test_cases`.
+Este repositório contém a suíte de automação de testes para o site <https://automationexercise.com>.
 
 ## Objetivo
-- Estruturar um projeto de automação de testes com foco em estudo e aprendizado.
-- Implementar os principais cenários de teste do site AutomationExercise.
-- Gerar relatórios de execução e evidências de teste para aprendizado prático.
+
+- Validar o comportamento das APIs e da interface do usuário do AutomationExercise.
+- Implementar uma suíte de testes end-to-end com Playwright.
+- Gerar relatórios de execução e disponibilizar um site navegável com os resultados.
 
 ## Estrutura do projeto
 
 - `package.json` — scripts de execução e dependências.
-- `playwright.config.js` — configuração do Playwright para gerar relatórios HTML e capturar evidências.
-- `tests/automationexercise.spec.js` — cenários de teste implementados.
-- `TEST_EVIDENCE.md` — evidência de testes e pontos de relatório.
+- `playwright.config.js` — configuração do Playwright.
+- `tests/api.spec.js` — testes de API do AutomationExercise.
+- `tests/automationexercise.spec.js` — testes de interface do AutomationExercise.
+- `automationexercise-executive-report.html` — relatório executivo estático.
+- `docs/index.html` — site navegável para GitHub Pages.
+- `.github/workflows/gh-pages.yml` — workflow de deploy automático para GitHub Pages.
+- `test-results/` — resultados de execução, capturas de tela e trace files.
 
 ## Site navegável
 
-A página será publicada via GitHub Pages após o deploy automático do workflow.
-A URL prevista é:
+O relatório está disponível via GitHub Pages em:
 
 `https://AllanaSouza.github.io/ia_test_automation/`
 
-## Passo a passo absoluto para iniciar (do zero)
+## Como configurar o projeto
 
-1. Instale o Node.js LTS no seu sistema.
+1. Instale o Node.js LTS.
 2. Abra o terminal na pasta do projeto.
-3. Se ainda não houver `package.json`, inicialize o projeto:
-
-```bash
-npm init -y
-```
-
-4. Instale as dependências do projeto:
+3. Instale as dependências:
 
 ```bash
 npm install
 ```
 
-5. Instale os navegadores necessários do Playwright:
+4. Instale os browsers necessários do Playwright:
 
 ```bash
 npx playwright install
 ```
 
-5. Execute o conjunto de testes:
+## Como executar os testes
+
+- Executar todos os testes:
 
 ```bash
 npm test
 ```
 
-6. Abra o relatório HTML:
+- Executar em modo visual (headed):
+
+```bash
+npm run test:headed
+```
+
+- Abrir o relatório HTML gerado localmente:
 
 ```bash
 npm run report
 ```
 
-## Comandos mais úteis
+## Conteúdo dos testes
 
-- `npm install` — instala dependências do projeto.
-- `npx playwright install` — instala os browsers necessários.
-- `npm test` — executa todos os testes Playwright.
-- `npm run test:headed` — executa os testes em modo não-headless para depuração visual.
-- `npm run report` — abre o relatório HTML de testes gerado.
-- `npx playwright codegen https://automationexercise.com/test_cases` — grava interações e gera esboços de testes automaticamente.
+### Testes de API
 
-## Cenários implementados
+`tests/api.spec.js` cobre cenários como:
 
-O suite automatizado cobre:
+- Lista completa de produtos e marcas.
+- Pesquisa de produtos.
+- Verificação de login com credenciais válidas e inválidas.
+- Criação e exclusão de conta.
+- Atualização de conta.
+- Consulta de usuário por e-mail.
 
-1. Página `/test_cases` acessível e lista de casos visível.
-2. Caso de teste 1: Cadastro de usuário e exclusão da conta.
-3. Caso de teste 2: Login com e-mail e senha corretos.
-4. Falha ao registrar usuário com e-mail já existente.
-5. Login com credenciais incorretas.
-6. Login com credenciais válidas e logout.
-7. Envio do formulário `Contact Us`.
+### Testes de UI
 
-## Evidência e relatório de qualidade
+`tests/automationexercise.spec.js` cobre cenários como:
 
-Após a execução dos testes, você pode encontrar evidências em:
+- Acessibilidade da página de casos de teste.
+- Cadastro de usuário e logout.
+- Login com e-mail e senha.
+- Falha de cadastro com e-mail existente.
+- Envio do formulário de contato.
+- Interações com produtos, carrinho e checkout.
+- Navegação e validação de elementos da página.
 
-- `playwright-report/index.html` — relatório HTML interativo.
-- `playwright-report` — capturas de tela e traces são gerados automaticamente em caso de falha.
-- `TEST_EVIDENCE.md` — resumo das evidências planejadas e métricas de qualidade.
+## Relatórios e evidências
 
-## Como usar IA com a automação de teste
+- `playwright-report/index.html` — relatório interativo do Playwright.
+- `automationexercise-executive-report.html` — relatório executivo estático.
+- `docs/index.html` — versão navegável para GitHub Pages.
+- `test-results/` — evidências de execução e logs de falhas.
 
-1. Abra o site alvo e analise os elementos importantes.
-2. Use `npx playwright codegen <URL>` para gerar selectors e fluxos de interação.
-3. Ajuste manualmente os testes usando seletores estáveis como `data-qa`, IDs e texto claro.
-4. Execute o teste e use o relatório HTML para validar o fluxo.
-5. Registre evidências de qualidade com prints de relatório, resultados e métricas de cobertura.
+## Observações finais
 
-## Observações
-
-- O projeto foi preparado para focar exclusivamente na automação do `automationexercise.com`.
-- Todo o conteúdo relacionado a outros projetos foi removido.
+- O projeto está configurado para deploy automático de GitHub Pages.
+- O README foi atualizado para refletir o estado atual completo do projeto.
+- Caso haja novos ajustes, execute `npm test` e atualize os relatórios.
