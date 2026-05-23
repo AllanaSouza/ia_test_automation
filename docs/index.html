@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Relatório Executivo - AutomationExercise</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; margin: 0; padding: 2rem; color: #333; background: #f7f8fb; }
+    h1, h2, h3 { color: #1f2937; }
+    p, li { color: #3b424f; }
+    ul { margin: 0 0 1rem 1.5rem; }
+    .card { background: #ffffff; border-radius: 12px; padding: 1.75rem; margin-bottom: 1.5rem; box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08); }
+    .badge { display: inline-block; background: #2563eb; color: #fff; border-radius: 999px; padding: 0.35rem 0.8rem; font-size: 0.9rem; }
+    .status { font-weight: 700; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Relatório Executivo</h1>
+    <p><span class="badge">Projeto</span> ia_test_automation</p>
+    <p>Este relatório apresenta o estado atual da suíte de testes AutomationExercise e os principais resultados obtidos.</p>
+  </div>
+
+  <div class="card">
+    <h2>1. Objetivo</h2>
+    <p>Validar a suíte de testes do projeto, incluindo automação de APIs e interface do usuário.</p>
+    <ul>
+      <li><strong>API</strong>: <code>tests/api.spec.js</code></li>
+      <li><strong>UI</strong>: <code>tests/automationexercise.spec.js</code></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>2. Status Atual</h2>
+    <h3>API</h3>
+    <ul>
+      <li>Todos os casos de API foram ajustados para refletir o comportamento real do endpoint.</li>
+      <li>Os testes <strong>API 13</strong> e <strong>API 14</strong> já passaram após as correções aplicadas.</li>
+    </ul>
+    <h3>UI</h3>
+    <ul>
+      <li>Total de testes identificados: <strong>32</strong></li>
+      <li>Executados até a primeira falha: <strong>9</strong></li>
+      <li>Passaram: <strong>8</strong></li>
+      <li>Falharam: <strong>1</strong></li>
+      <li>Não executados: <strong>23</strong></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>3. Falha Identificada</h2>
+    <p><strong>Teste:</strong> <code>contact us form can be submitted</code></p>
+    <p><strong>Arquivo:</strong> <code>tests/automationexercise.spec.js</code></p>
+    <p><strong>Descrição:</strong> o seletor de mensagem de sucesso retornou dois elementos idênticos, o que provocou uma violação de modo estrito no Playwright.</p>
+  </div>
+
+  <div class="card">
+    <h2>4. Impacto</h2>
+    <ul>
+      <li>A falha atual bloqueia a execução completa do arquivo de testes UI em uma única passagem.</li>
+      <li>Indicativo de que os seletores precisam ser mais específicos nas validações de mensagens.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>5. Recomendações</h2>
+    <ul>
+      <li>Ajustar o seletor do sucesso do formulário de contato para que seja único.</li>
+      <li>Reexecutar <code>npx playwright test tests/automationexercise.spec.js</code> após a correção.</li>
+      <li>Aplicar boas práticas de seleção única em todas as verificações de mensagens de sucesso/erro.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>6. Conclusão</h2>
+    <p>As APIs já estão alinhadas ao comportamento real. A única pendência crítica atual é o ajuste de seletor no teste de formulário de contato da suíte UI.</p>
+  </div>
+</body>
+</html>

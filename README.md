@@ -14,6 +14,13 @@ Este repositório contém um conjunto de testes automatizados para os cenários 
 - `tests/automationexercise.spec.js` — cenários de teste implementados.
 - `TEST_EVIDENCE.md` — evidência de testes e pontos de relatório.
 
+## Site navegável
+
+A página será publicada via GitHub Pages após o deploy automático do workflow.
+A URL prevista é:
+
+`https://AllanaSouza.github.io/ia_test_automation/`
+
 ## Passo a passo absoluto para iniciar (do zero)
 
 1. Instale o Node.js LTS no seu sistema.
