@@ -13,6 +13,7 @@ Este repositório contém a suíte de automação de testes para o site <https:/
 - `package.json` — scripts de execução e dependências.
 - `playwright.config.js` — configuração do Playwright.
 - `tests/api.spec.js` — testes de API do AutomationExercise.
+- `tests/api.contract.spec.js` — testes de contrato de API com validação de esquema JSON.
 - `tests/automationexercise.spec.js` — testes de interface do AutomationExercise.
 - `automationexercise-executive-report.html` — relatório executivo estático.
 - `docs/index.html` — site navegável para GitHub Pages.
@@ -73,7 +74,16 @@ npm run report
 - Criação e exclusão de conta.
 - Atualização de conta.
 - Consulta de usuário por e-mail.
+### Testes de Contrato de API
 
+`tests/api.contract.spec.js` valida os contratos de resposta usando JSON Schema para garantir a estrutura esperada da API:
+
+- Validação de `GET /productsList`.
+- Validação de `GET /brandsList`.
+- Validação de `POST /searchProduct`.
+- Validação de `POST /createAccount`.
+- Validação de `PUT /updateAccount`.
+- Validação de `GET /getUserDetailByEmail`.
 ### Testes de UI
 
 `tests/automationexercise.spec.js` cobre cenários como:
