@@ -300,9 +300,12 @@ test.describe.serial('AutomationExercise API - 14 Casos Específicos', () => {
       mobile_number: '1234567890'
     };
 
-    // PASSO 2: Realiza requisição POST para criar conta.
+    // PASSO 2: Realiza requisição POST para criar conta usando formato x-www-form-urlencoded.
     const response = await request.post(`${API_BASE_URL}/createAccount`, {
-      data: newUserData
+      data: new URLSearchParams(newUserData).toString(),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
     });
 
     // PASSO 3: Valida que retorna 201 (Created) para nova conta.
@@ -343,7 +346,10 @@ test.describe.serial('AutomationExercise API - 14 Casos Específicos', () => {
 
     // PASSO 2: Cria a conta.
     const createResponse = await request.post(`${API_BASE_URL}/createAccount`, {
-      data: userData
+      data: new URLSearchParams(userData).toString(),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
     });
     expect([200, 201]).toContain(createResponse.status());
 
@@ -353,9 +359,12 @@ test.describe.serial('AutomationExercise API - 14 Casos Específicos', () => {
       password: userData.password
     };
 
-    // PASSO 4: Realiza requisição DELETE.
+    // PASSO 4: Realiza requisição DELETE usando formato x-www-form-urlencoded.
     const deleteResponse = await request.delete(`${API_BASE_URL}/deleteAccount`, {
-      data: deleteData
+      data: new URLSearchParams(deleteData).toString(),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
     });
 
     // PASSO 5: Valida que retorna 200 para deleção bem-sucedida.
@@ -393,22 +402,29 @@ test.describe.serial('AutomationExercise API - 14 Casos Específicos', () => {
       mobile_number: '1234567890'
     };
 
-    // PASSO 2: Cria a conta.
+    // PASSO 2: Cria a conta usando o formato aceito pela API.
     const createResponse = await request.post(`${API_BASE_URL}/createAccount`, {
-      data: userData
+      data: new URLSearchParams(userData).toString(),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
     });
     expect([200, 201]).toContain(createResponse.status());
 
     // PASSO 3: Prepara dados atualizados.
     const updatedData = {
-      ...userData,
+      email: userData.email,
+      password: userData.password,
       company: 'New Company Updated', // Alterou a empresa
       firstname: 'UpdatedName'
     };
 
-    // PASSO 4: Realiza requisição PUT para atualizar.
+    // PASSO 4: Realiza requisição PUT para atualizar usando o formato aceito pela API.
     const updateResponse = await request.put(`${API_BASE_URL}/updateAccount`, {
-      data: updatedData
+      data: new URLSearchParams(updatedData).toString(),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
     });
 
     // PASSO 5: Valida que retorna 200 para atualização bem-sucedida.
@@ -444,8 +460,9 @@ test.describe.serial('AutomationExercise API - 14 Casos Específicos', () => {
     if (response.status() === 200) {
       expect(responseBody).toHaveProperty('user');
       expect(responseBody.user).toHaveProperty('email');
-      expect(responseBody.user).toHaveProperty('firstname');
-      expect(responseBody.user).toHaveProperty('lastname');
+      // A API retorna first_name / last_name em vez de firstname / lastname.
+      expect(responseBody.user).toHaveProperty('first_name');
+      expect(responseBody.user).toHaveProperty('last_name');
     }
 
     console.log(`✓ API 14 OK - Status: ${response.status()}, Resposta: ${responseBody.message || 'User found'}`);
