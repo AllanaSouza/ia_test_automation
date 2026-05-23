@@ -1,0 +1,33 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run Accessibility Tests",
+			"type": "shell",
+			"command": "cd c:\\dev\\copilot && npx playwright test tests/accessibility.spec.js",
+			"isBackground": false
+		},
+		{
+			"label": "Run Accessibility Tests",
+			"type": "shell",
+			"command": "cd c:\\dev\\copilot; npx playwright test tests/accessibility.spec.js",
+			"isBackground": false
+		},
+		{
+			"label": "Run Accessibility Tests",
+			"type": "shell",
+			"command": "npx playwright test tests/accessibility.spec.js",
+			"isBackground": false
+		},
+		{
+			"label": "Run Accessibility Tests",
+			"type": "shell",
+			"command": "cmd.exe",
+			"args": [
+				"/c",
+				"npx playwright test tests/accessibility.spec.js"
+			],
+			"isBackground": false
+		}
+	]
+}

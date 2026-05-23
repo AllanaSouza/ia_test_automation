@@ -1,52 +1,65 @@
-# AutomationExercise Test Automation
+# 🤖 Automação de Testes com IA - AutomationExercise
 
-Este repositório contém a suíte de automação de testes para o site <https://automationexercise.com>.
+## 📌 O que é este projeto?
 
-## Objetivo
+Este é um **projeto educacional de automação de testes com IA** para o site [AutomationExercise](https://automationexercise.com).
 
-- Validar o comportamento das APIs e da interface do usuário do AutomationExercise.
-- Implementar uma suíte de testes end-to-end com Playwright.
-- Gerar relatórios de execução e disponibilizar um site navegável com os resultados.
+Ele demonstra boas práticas de testes automatizados usando **Playwright**, incluindo:
+- ✅ Testes de interface (UI)
+- ✅ Testes de API
+- ✅ Testes de contrato (validação de esquema)
+- ✅ Testes de acessibilidade
 
-## Estrutura do projeto
+## 🎯 Objetivo
 
-- `package.json` — scripts de execução e dependências.
-- `playwright.config.js` — configuração do Playwright.
-- `tests/api.spec.js` — testes de API do AutomationExercise.
-- `tests/api.contract.spec.js` — testes de contrato de API com validação de esquema JSON.
-- `tests/automationexercise.spec.js` — testes de interface do AutomationExercise.
-- `automationexercise-executive-report.html` — relatório executivo estático.
-- `docs/index.html` — site navegável para GitHub Pages.
-- `.github/workflows/gh-pages.yml` — workflow de deploy automático para GitHub Pages.
-- `test-results/` — resultados de execução, capturas de tela e trace files.
+- Validar que as APIs funcionam conforme esperado
+- Testar o comportamento da interface do usuário
+- Garantir que o website é acessível
+- Gerar relatórios visuais com evidências
+- Demonstrar conceitos de QA para outros estudantes
 
-## Site navegável
+## 📂 Estrutura do Projeto
 
-O relatório está disponível via GitHub Pages em:
-
-`https://AllanaSouza.github.io/ia_test_automation/`
-
-## Como configurar o projeto
-
-1. Instale o Node.js LTS.
-2. Abra o terminal na pasta do projeto.
-3. Instale as dependências:
-
-```bash
-npm install
+```
+.
+├── tests/                              # 📁 Arquivos de teste
+│   ├── api.spec.js                     # Testes de 14 endpoints
+│   ├── api.contract.spec.js            # Testes de validação de estrutura (schema)
+│   ├── automationexercise.spec.js      # Testes de UI (interface)
+│   └── accessibility.spec.js           # Testes de acessibilidade
+├── docs/                               # 📁 Documentação e site
+│   └── index.html                      # Site do GitHub Pages
+├── playwright.config.js                # ⚙️ Configuração do Playwright
+├── package.json                        # 📋 Dependências e scripts
+├── README.md                           # Este arquivo
+└── .github/workflows/gh-pages.yml      # Automação de deploy
 ```
 
-4. Instale os browsers necessários do Playwright:
+## 🚀 Como Configurar
+
+### 1️⃣ Pré-requisitos
+
+- Node.js 18+ instalado
+- Terminal/Prompt de comando
+- Não precisa de navegador instalado (Playwright instala automaticamente)
+
+### 2️⃣ Instalação
 
 ```bash
+# Clonar o repositório
+git clone https://github.com/AllanaSouza/ia_test_automation.git
+cd ia_test_automation
+
+# Instalar dependências
+npm install
+
+# Baixar browsers (Chromium, Firefox, WebKit)
 npx playwright install
 ```
 
-## Como executar os testes
+## 🧪 Como Executar os Testes
 
-- Executar todos os testes:
-
-```bash
+### Executar todos os testes
 npm test
 ```
 
@@ -54,6 +67,12 @@ npm test
 
 ```bash
 npm run test:headed
+```
+
+- Executar os testes de acessibilidade:
+
+```bash
+npm run test:accessibility
 ```
 
 - Abrir o relatório HTML gerado localmente:
@@ -84,6 +103,14 @@ npm run report
 - Validação de `POST /createAccount`.
 - Validação de `PUT /updateAccount`.
 - Validação de `GET /getUserDetailByEmail`.
+
+### Testes de Acessibilidade
+
+`tests/accessibility.spec.js` valida elementos básicos de acessibilidade nas páginas principais:
+
+- Página inicial (`/`) contém título principal e ações legíveis.
+- Página de contato (`/contact_us`) contém formulário e botão de envio com texto.
+
 ### Testes de UI
 
 `tests/automationexercise.spec.js` cobre cenários como:

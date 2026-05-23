@@ -1,15 +1,16 @@
 {
   "name": "copilot",
   "version": "1.0.0",
-  "description": "",
+  "description": "Projeto educacional de automação de testes com Playwright para o site AutomationExercise",
   "main": "index.js",
   "scripts": {
-    "test": "npx playwright test",
-    "test:playwright": "npx playwright test",
-    "test:headed": "npx playwright test --headed",
-    "report": "npx playwright show-report"
+    "test": "npx playwright test                          # Executa todos os testes (UI, API, Contrato, Acessibilidade)",
+    "test:playwright": "npx playwright test               # Mesmo que 'test' - alias para compatibilidade",
+    "test:headed": "npx playwright test --headed          # Executa testes mostrando o navegador na tela",
+    "test:accessibility": "npx playwright test tests/accessibility.spec.js  # Executa apenas testes de acessibilidade",
+    "report": "npx playwright show-report                 # Abre o relatório HTML interativo dos últimos testes"
   },
-  "keywords": [],
+  "keywords": ["playwright", "automação", "testes", "qa", "educacional"],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
@@ -18,3 +19,4 @@
     "ajv": "^8.20.0"
   }
 }
+
